@@ -36,34 +36,36 @@ div.white-box{
     align-items: center;
     justify-content: center;
     background-color: black;
-    width: 400px;
-    height: 250px;
+    width: 500px;
+    height: 400px;
     border: 1px solid white;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #3a3939;
 }
 
-form#login-form{
+form#signup-form{
     display: flex;
     flex-direction: column;
 }
 
-form#login-form input {
-    margin: 8px;
+form#signup-form input {
+    margin-top: 8px;
+    margin-bottom: 4px;
     color: white;
-    background-color: black;
+    background-color: black;   
 }
 
-form#login-form input:focus, form#login-form input:hover{
+form#signup-form input:focus, form#signup-form input:hover{
     border-color: yellow;
     border-radius: 2px; 
 }
 
-form#login-form input#submit:focus, form#login-form input#submit:hover{
+form#signup-form input#submit:focus, form#signup-form input#submit:hover{
     color: yellow;
     border-color: yellow;
     border-radius: 2px; 
 }
+
 
 footer{
     position: absolute;
