@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		<link rel="stylesheet" type="text/css" href="./css/login-high-contrast.css">
 		<title> Só os bons </title>
 	</head>
 	<body>
         <header class="menu"> 
+        <button type="button">Alto Contraste</button>
         <button type="button">Ver produtos</button>
-        <button type="button">Login</button> 
+        <button type="button" onclick="">Login</button> 
         </header>
 		<div class="container">    
             <div class="white-box">
@@ -17,7 +18,9 @@
                         <input type="text" id="username" name="username" placeholder="Insira seu username">
                         <label for="pwd">Senha</label>
                         <input type="password" id="pwd" name="pwd" placeholder="Insira seu password">
-                        <input type="submit" value="Login">
+                        <!-- <div class="login-btn"> -->
+                            <input id="submit" type="submit" value="Login">
+                        <!-- </div> -->
                     </form>
                     <div class="signup-link">
                         <p>Não tem uma conta? Crie <a href="signup.html">agora</a>.</p>
