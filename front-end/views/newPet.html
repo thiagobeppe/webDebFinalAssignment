@@ -46,54 +46,58 @@
     <!-- Login form -->
     <main role="main" class="container">
       <div class="jumbotron">
-        <h1>SignIn</h1>
+        <h1>Cadastro de Pet</h1>
         <form>
 		  <div class="row">
 			<div class="form-group col-md-6">
-			  <label for="inputEmail">Email</label>
-			  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+			  <label for="inputAnimal">Animal</label>
+			  <select class="form-control" id="inputAnimal">
+			    <option>Cachorro</option>
+			    <option>Gato</option>
+			  </select>
 			</div>
 			<div class="form-group col-md-6">
-			  <label for="inputPassword">Password</label>
-			  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+			  <label for="inputSexo">Sexo</label>
+			  <div class="form-control">
+				  <div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="inputSexo" id="inlineRadio1" value="option1">
+					<label class="form-check-label" for="inlineRadio1">Macho</label>
+				  </div>
+				  <div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="inputSexo" id="inlineRadio2" value="option2">
+					<label class="form-check-label" for="inlineRadio2">Fêmea</label>
+				  </div>
+			  </div>
 			</div>
 		  </div>
 		  <div class="row">
-			<div class="form-group col-md-8">
-				<label for="inputName">Nome Completo</label>
-				<input type="text" class="form-control" id="inputName" placeholder="Seu nome completo">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="inputTel">Telefone</label>
-				<input type="text" class="form-control" id="inputTel" placeholder="Seu telefone">
+			<div class="form-group col-md-12">
+				<label for="inputName">Nome</label>
+				<input type="text" class="form-control" id="inputName" placeholder="Nome do Animal">
 			</div>
 		  </div>
 		  <div class="row">
-			<div class="form-group col-md-7">
-				<label for="inputEndereco">Endereço</label>
-				<input type="text" class="form-control" id="inputAddress" placeholder="Seu Endereço">
-			</div>
-			<div class="form-group col-md-2">
-				<label for="inputN">Nº</label>
-				<input type="text" class="form-control" id="inputN" placeholder="nº">
+			<div class="form-group col-md-3">
+				<label for="inputCor">Cor</label>
+				<input type="text" class="form-control" id="inputCor" placeholder="Cor do Animal">
 			</div>
 			<div class="form-group col-md-3">
-				<label for="inputBairro">Bairro</label>
-				<input type="text" class="form-control" id="inputBairro" placeholder="Bairro">
+				<label for="inputRaca">Raça</label>
+				<input type="text" class="form-control" id="inputRaca" placeholder="Raça do Animal">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputPorte">Porte</label>
+				<input type="text" class="form-control" id="inputPorte" placeholder="Porte do Animal">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputIdade">Idade</label>
+				<input type="text" class="form-control" id="inputIdade" placeholder="x Anos">
 			</div>
 		  </div>
 		  <div class="row">
-			<div class="form-group col-md-6">
-			  <label for="inputCidade">Cidade</label>
-			  <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
-			</div>
-			<div class="form-group col-md-4">
-			  <label for="inputState">Estado</label>
-			  <input type="text" class="form-control" id="inputState" placeholder="UF">
-			</div>
-			<div class="form-group col-md-2">
-			  <label for="inputCep">CEP</label>
-			  <input type="text" class="form-control" id="inputCep" placeholder="CEP">
+			<div class="form-group col-md-12">
+			  <label for="inputObs">Observações</label>
+			  <textarea class="form-control" id="inputObs"></textarea>
 			</div>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Cadastrar</button>
