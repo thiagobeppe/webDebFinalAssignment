@@ -19,7 +19,7 @@ function initiate() {
         bname = bname.split('_')[0]
         swapStyleSheet(`assets/css/${bname}.css`);
     } else {      
-        swapStyleSheet("assets/css/" + bname + "_contrast.css");        
+        swapStyleSheet(`assets/css/${bname}_contrast.css`);        
     }
     
     var styleNow = document.getElementById("contrast");
