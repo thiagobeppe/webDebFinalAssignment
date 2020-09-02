@@ -1,3 +1,10 @@
+function changeFontSize(value) {
+    txt = document.body;
+    css_font_size = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+    font_size = parseFloat(css_font_size);
+    txt.style.fontSize = (font_size + value) + 'px';
+}
+
 function swapStyleSheet(sheet) {
     document.getElementById("contrast").setAttribute("href", sheet); 
 }
