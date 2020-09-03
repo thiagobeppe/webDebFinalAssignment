@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="devsbons">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Adocão</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/signup.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav id="nav" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Adocão</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">SignIn</a>
+            </li>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+		    <button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
+			<button type="button" class="btn btn-nav btn-primary">A+</button>
+			<button type="button" class="btn btn-nav btn-primary">A-</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Login form -->
+    <main role="main" class="container">
+      <div class="jumbotron">
+      <h1>SignUp</h1>
+			<form action="newuser" method="post">
+				<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputEmail">Email</label>
+					<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputPassword">Password</label>
+					<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-md-8">
+					<label for="inputName">Nome Completo</label>
+					<input type="text" class="form-control" id="inputName" placeholder="Seu nome completo" name="name" required>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="inputTel">Telefone</label>
+					<input type="text" class="form-control" id="inputTel" placeholder="Seu telefone" name="telephone" required>
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-md-7">
+					<label for="inputEndereco">Endereço</label>
+					<input type="text" class="form-control" id="inputAddress" placeholder="Seu Endereço" name="address" required>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="inputN">Nº</label>
+					<input type="text" class="form-control" id="inputN" placeholder="nº" name="number" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="inputBairro">Bairro</label>
+					<input type="text" class="form-control" id="inputBairro" placeholder="Bairro" name="neighborhood" required>
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputCidade">Cidade</label>
+					<input type="text" class="form-control" id="inputCity" placeholder="Cidade" name="city" required>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="inputState">Estado</label>
+					<input type="text" class="form-control" id="inputState" placeholder="UF" name="state" required>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="inputCep">CEP</label>
+					<input type="text" class="form-control" id="inputCep" placeholder="CEP" name="cep" required>
+				</div>
+				</div>
+				<button id="cadastrar" type="submit" class="btn btn-primary">Cadastrar</button>
+		</form>
+      </div>
+    </main>
+
+	<!-- Footer -->
+    <footer class="footer">
+      <div class="container text-center">
+        <span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
+      </div>
+    </footer>
+  </body>
+</html>
