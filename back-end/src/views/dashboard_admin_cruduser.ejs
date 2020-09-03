@@ -13,10 +13,10 @@
     <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/assets/css/dashboard_admin_cruduser.css" rel="stylesheet">
+    <link id="contrast" href="/assets/css/dashboard_admin_cruduser.css" rel="stylesheet">
 
      <!-- Script para mudança de contraste -->
-     <script type="application/javascript" src="./../controllers/Accessibility.js"></script>
+     <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
   </head>
 
   <body>
@@ -38,7 +38,7 @@
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
-			<button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
+			<button id="changeCSS" type="button" onclick=initiate() class="btn btn-nav btn-primary">Alto Contraste</button>
 			<button type="button" class="btn btn-nav btn-primary">A+</button>
 			<button type="button" class="btn btn-nav btn-primary">A-</button>
           </form>
