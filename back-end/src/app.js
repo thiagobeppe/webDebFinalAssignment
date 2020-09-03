@@ -36,6 +36,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 app.set('views', './src/views');
 
+//Rotas dos arquivos EJS
+
+app.get('/', function (req, res) {
+  res.render('dashboard');
+});
+
+app.get('/admins/signin', function (req, res) {
+  res.render('signin_admin');
+});
+
+app.get('/users/signin', function (req, res) {
+  res.render('signin');
+});
+
 app.get('/users/signup', function (req, res) {
   res.render('signup');
 });
@@ -44,9 +58,15 @@ app.get('/pets/create', function (req, res) {
   res.render('newPet');
 });
 
-app.get('/dashboard-admin/users', function (req, res) {
-  res.render('dashboard_admin_cruduser');
+app.get('/dashboard-admin/pets', function (req, res) {
+  res.render('dashboard_admin');
 });
+
+app.get('/dashboard-users/pets', function (req, res) {
+  res.render('dashboard_user');
+});
+
+//Fim das rotas dos arquivos EJS
 
 app.listen(3000, function () {
   console.log("Example app listening on port 3000!");
