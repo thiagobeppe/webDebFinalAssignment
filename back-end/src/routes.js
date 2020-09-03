@@ -18,4 +18,5 @@ routes.get("/dashboard-admin/users", UserController.listusers);
 
 routes.get("/users", UserController.index);
 
+
 module.exports = routes;

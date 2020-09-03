@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
   city: String,
   state: String,
   cep: String,
+  role: String
 });
 
 module.exports = mongoose.model("User", UserSchema);
