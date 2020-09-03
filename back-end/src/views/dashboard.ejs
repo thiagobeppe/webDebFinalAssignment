@@ -67,15 +67,17 @@
 			</tr>
 		  </thead>
 		  <tbody>
-			<tr>
+      <% pets.forEach(function(data) { %>
+      <tr>
 			  <th scope="row">1</th>
-			  <td>Cachorro</td>
-			  <td>Félix</td>
-			  <td>Macho</td>
-			  <td>Vira-lata</td>
-			  <td>Pequeno</td>
+			  <td><%= data.type %></td>
+			  <td><%= data.name %></td>
+			  <td><%= data.gender %></td>
+			  <td><%= data.breed %></td>
+			  <td><%= data.shape %></td>
 			  <td>999899665</td>
-			</tr>
+      </tr>
+      <% }) %>
 			<tr>
 			  <th scope="row">2</th>
 			  <td>Cachorro</td>

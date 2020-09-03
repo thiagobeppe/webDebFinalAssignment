@@ -37,11 +37,6 @@ app.use(routes);
 app.set('views', './src/views');
 
 //Rotas dos arquivos EJS
-
-app.get('/', function (req, res) {
-  res.render('dashboard');
-});
-
 app.get('/admins/signin', function (req, res) {
   res.render('signin_admin');
 });
