@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const { request } = require("express");
 
 module.exports = {
   async index(request, response) {
@@ -11,6 +12,21 @@ module.exports = {
     User.find({}).then(function(user){
       response.render('dashboard_admin_cruduser', {users: user});
     });
+  },
+
+  async login(request, response) {
+    let email = request.body.email;
+    let pwd = request.body.password;
+    var usr = await User.findOne({'email': email})
+    if (usr != null) {
+      if (pwd == usr.password){
+        response.render('dashboard_user',data=usr)
+      }
+      else {
+        response.status(500).render("signin")
+      }
+    }
+    else   {response.status(500).render("signin")}
   },
 
   async adduser(request, response) {
@@ -41,6 +57,10 @@ module.exports = {
     User.create(data).then(function(user){
       response.render('signup')
     });
+  },
+
+  async signInUser(request,response){
+    response.render('signin')
   },
   // async storeUser(request, response) {
   //   const {
