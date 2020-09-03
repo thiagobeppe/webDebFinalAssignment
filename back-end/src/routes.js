@@ -8,11 +8,13 @@ routes.get("/", (req, res) => {
   return res.json({ message: "Hello Word!" });
 });
 
-routes.post("/pets", PetController.storePet);
+routes.post("/pets/newpet", PetController.addpet);
 
 routes.get("/pets", PetController.index);
 
-routes.post("/users", UserController.storeUser);
+routes.post('/users/newuser', UserController.adduser);
+
+routes.get("/users/list", UserController.listusers);
 
 routes.get("/users", UserController.index);
 

@@ -8,8 +8,12 @@ const PetSchema = new mongoose.Schema({
   gender: String,
   color: String,
   age: String,
-  status: String,
+  status: {
+    type: String,
+    default: "False",
+  },
   obs: String,
+  owner: String,
 });
 
 module.exports = mongoose.model("Pet", PetSchema);
