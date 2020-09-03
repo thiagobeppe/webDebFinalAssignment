@@ -8,6 +8,8 @@ const routes = Router();
 //   return res.json({ message: "Hello Word!" });
 // });
 
+routes.get("/", PetController.listpets)
+
 routes.post("/pets/newpet", PetController.addpet);
 
 routes.get("/pets", PetController.index);

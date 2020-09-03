@@ -7,6 +7,12 @@ module.exports = {
     return response.json(pets);
   },
 
+  async listpets(request, response) {
+    Pet.find({}).then(function(pet){
+      response.render('dashboard', {pets: pet});
+    });
+  },
+
   async addpet(request, response) {
     let name = request.body.name;
     let breed = request.body.breed;

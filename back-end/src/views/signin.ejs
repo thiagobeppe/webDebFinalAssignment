@@ -9,14 +9,11 @@
 
     <title>Adocão</title>
 
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/signin.css" rel="stylesheet" id="contrast">
+    
     <!-- Bootstrap core CSS -->
     <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/assets/css/signin.css" rel="stylesheet">
-
-     <!-- Script para mudança de contraste -->
-     <script type="application/javascript" src="./../controllers/Accessibility.js"></script>
   </head>
 
   <body>
@@ -31,16 +28,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SignIn</a>
+              <a class="nav-link" href="/users/signin">SignIn</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
-		    <button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
-			<button type="button" class="btn btn-nav btn-primary">A+</button>
-			<button type="button" class="btn btn-nav btn-primary">A-</button>
+            <button id="changeCSS" type="button" onclick=initiate() class="btn btn-nav btn-primary">Alto Contraste</button>
+            <button id="increaseSize" onclick=changeFontSize(2) type="button" class="btn btn-nav btn-primary">A+</button>
+            <button id="decreaseSize" onclick=changeFontSize(-2) type="button" class="btn btn-nav btn-primary">A-</button>
           </form>
         </div>
       </nav>
@@ -58,7 +55,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 	  </br>
 	  </br>
-      <a class="mt-5 mb-3 text-muted" href="">Ainda não possui cadastro?</a>
+      <a class="mt-5 mb-3 text-muted" href="/users/signup">Ainda não possui cadastro?</a>
     </form>
     </main>
 
@@ -69,4 +66,6 @@
       </div>
     </footer>
   </body>
+  <!-- Script para mudança de contraste -->
+  <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
 </html>

@@ -13,11 +13,11 @@
     <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link href="/assets/css/dashboard_user.css" rel="stylesheet">
+	<link id="contrast" href="/assets/css/dashboard_user.css" rel="stylesheet">
 	
 	 <!-- Script para mudança de contraste -->
-	 <script type="application/javascript" src="./../controllers/Accessibility.js"></script>
-</head>
+	 <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
+  </head>
 
   <body>
 
@@ -31,16 +31,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SignIn</a>
+              <a class="nav-link" href="/users/signin">SignIn</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
-			<button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
-			<button type="button" class="btn btn-nav btn-primary">A+</button>
-			<button type="button" class="btn btn-nav btn-primary">A-</button>
+						<button id="changeCSS" type="button" onclick=initiate() class="btn btn-nav btn-primary">Alto Contraste</button>
+						<button id="increaseSize" onclick=changeFontSize(2) type="button" class="btn btn-nav btn-primary">A+</button>
+            <button id="decreaseSize" onclick=changeFontSize(-2) type="button" class="btn btn-nav btn-primary">A-</button>
           </form>
         </div>
       </nav>
@@ -53,7 +53,7 @@
           <h3 class="display-5">Bem-vindo, <%=data.name%> </h3>
           <p>Clique no botão abaixo para cadastrar um novo animal ou gerencie seus animais na tabela abaixo.</p>
 		  <button type="button" class="btn btn-nav btn-danger float-right">Logout</button>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Cadastrar Novo &raquo;</a></p>
+          <p><a class="btn btn-primary btn-lg" href="/pets/create" role="button">Cadastrar Novo &raquo;</a></p>
         </div>
       </div>
       <table class="table">

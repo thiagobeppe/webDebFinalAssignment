@@ -13,10 +13,10 @@
     <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link href="/assets/css/newPet.css" rel="stylesheet">
+	<link id="contrast" href="/assets/css/newPet.css" rel="stylesheet">
 	
 	 <!-- Script para mudança de contraste -->
-	 <script type="application/javascript" src="./../controllers/Accessibility.js"></script>
+	 <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
   </head>
 
   <body>
@@ -31,16 +31,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SignIn</a>
+              <a class="nav-link" href="/users/signin">SignIn</a>
             </li>
           </ul>
           <form id="newPet" class="form-inline mt-2 mt-md-0">
-		    <button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
-			<button type="button" class="btn btn-nav btn-primary">A+</button>
-			<button type="button" class="btn btn-nav btn-primary">A-</button>
+						<button id="changeCSS" type="button" onclick=initiate() class="btn btn-nav btn-primary">Alto Contraste</button>
+						<button id="increaseSize" onclick=changeFontSize(2) type="button" class="btn btn-nav btn-primary">A+</button>
+						<button id="decreaseSize" onclick=changeFontSize(-2) type="button" class="btn btn-nav btn-primary">A-</button>
           </form>
         </div>
       </nav>
@@ -63,11 +63,11 @@
 			  <label for="inputSexo">Sexo</label>
 			  <div id="sexo" class="form-control">
 				  <div id="sexo" class="form-check form-check-inline">
-					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="option1" checked>
+					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Macho" checked>
 					<label id="sexo" class="form-check-label" for="inlineRadio1">Macho</label>
 				  </div>
 				  <div class="form-check form-check-inline">
-					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="option2">
+					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Fẽmea">
 					<label id="sexo" class="form-check-label" for="inlineRadio2">Fêmea</label>
 				  </div>
 			  </div>
