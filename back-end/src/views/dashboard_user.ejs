@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="devsbons">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Adocão</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/dashboard_user.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Adocão</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">SignIn</a>
+            </li>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+			<button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
+			<button type="button" class="btn btn-nav btn-primary">A+</button>
+			<button type="button" class="btn btn-nav btn-primary">A-</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Login form -->
+    <main role="main" class="container">
+	  <div class="jumbotron">
+        <div class="container">
+          <h3 class="display-5">Bem-vindo Fulano!</h3>
+          <p>Clique no botão abaixo para cadastrar um novo animal ou gerencie seus animais na tabela abaixo.</p>
+		  <button type="button" class="btn btn-nav btn-danger float-right">Logout</button>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Cadastrar Novo &raquo;</a></p>
+        </div>
+      </div>
+      <table class="table">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Animal</th>
+			  <th scope="col">Nome</th>
+			  <th scope="col">Sexo</th>
+			  <th scope="col">Raça</th>
+			  <th scope="col">Porte</th>
+			  <th scope="col">Situação</th>
+			  <th class="actions">Ações</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Cachorro</td>
+			  <td>Félix</td>
+			  <td>Macho</td>
+			  <td>Vira-lata</td>
+			  <td>Pequeno</td>
+			  <td><span class="badge badge-success">Aprovado</span></td>
+			  <td class="actions">
+			    <a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
+				<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
+				<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+			  </td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Cachorro</td>
+			  <td>Félix</td>
+			  <td>Macho</td>
+			  <td>Vira-lata</td>
+			  <td>Pequeno</td>
+			  <td><span class="badge badge-success">Aprovado</span></td>
+			  <td class="actions">
+			    <a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
+				<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
+				<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+			  </td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Cachorro</td>
+			  <td>Félix</td>
+			  <td>Macho</td>
+			  <td>Vira-lata</td>
+			  <td>Pequeno</td>
+			  <td><span class="badge badge-danger">Desaprovado</span></td>
+			  <td class="actions">
+			    <a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
+				<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
+				<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+			  </td>
+			</tr>
+		  </tbody>
+		</table>
+    </main>
+
+	<!-- Footer -->
+    <footer class="footer">
+      <div class="container text-center">
+        <span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
+      </div>
+    </footer>
+  </body>
+</html>

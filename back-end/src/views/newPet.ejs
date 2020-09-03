@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="devsbons">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Adocão</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/newPet.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Adocão</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">SignIn</a>
+            </li>
+          </ul>
+          <form id="newPet" class="form-inline mt-2 mt-md-0">
+		    <button type="button" class="btn btn-nav btn-primary">Alto Contraste</button>
+			<button type="button" class="btn btn-nav btn-primary">A+</button>
+			<button type="button" class="btn btn-nav btn-primary">A-</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Login form -->
+    <main role="main" class="container">
+      <div class="jumbotron">
+        <h1>Cadastro de Pet</h1>
+      <form action="newpet" method="post">
+		  <div class="row">
+			<div id="animal" class="form-group col-md-6">
+			  <label for="inputAnimal">Animal</label>
+			  <select id="animal" class="form-control" id="inputAnimal" name="type" required>
+			    <option>Cachorro</option>
+			    <option>Gato</option>
+			  </select>
+			</div>
+			<div class="form-group col-md-6">
+			  <label for="inputSexo">Sexo</label>
+			  <div id="sexo" class="form-control">
+				  <div id="sexo" class="form-check form-check-inline">
+					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="option1" checked>
+					<label id="sexo" class="form-check-label" for="inlineRadio1">Macho</label>
+				  </div>
+				  <div class="form-check form-check-inline">
+					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="option2">
+					<label id="sexo" class="form-check-label" for="inlineRadio2">Fêmea</label>
+				  </div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-12">
+				<label for="inputName">Nome</label>
+				<input type="text" class="form-control" id="inputName" placeholder="Nome do Animal" name="name" required>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-3">
+				<label for="inputCor">Cor</label>
+				<input type="text" class="form-control" id="inputCor" placeholder="Cor do Animal" name="color" required>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputRaca">Raça</label>
+				<input type="text" class="form-control" id="inputRaca" placeholder="Raça do Animal" name="breed" required> 
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputPorte">Porte</label>
+				<input type="text" class="form-control" id="inputPorte" placeholder="Porte do Animal" name="shape" required>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputIdade">Idade</label>
+				<input type="text" class="form-control" id="inputIdade" placeholder="x Anos" name="age" required>
+			</div>
+		  </div>
+		  <div class="row">
+			<div id="newPet" class="form-group col-md-12">
+			  <label for="inputObs">Observações</label>
+			  <textarea class="form-control" id="inputObs" name="obs"></textarea>
+			</div>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Cadastrar</button>
+		</form>
+      </div>
+    </main>
+
+	<!-- Footer -->
+    <footer class="footer">
+      <div class="container text-center">
+        <span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
+      </div>
+    </footer>
+  </body>
+</html>
