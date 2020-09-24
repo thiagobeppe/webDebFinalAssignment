@@ -17,6 +17,14 @@
 	
 	 <!-- Script para mudança de contraste -->
 	 <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
+	 <script type="text/javascript" language="JavaScript">
+		function verifyPermission(){
+		  if (window.localStorage.getItem("email") == "") {
+			alert("Usuário Inválido !!")
+					window.history.back()
+		  }
+		}
+	  </script>
   </head>
 
   <body>
@@ -44,7 +52,10 @@
           </form>
         </div>
       </nav>
-    </header>
+	</header>
+	<script type="text/javascript" language="JavaScript">
+		verifyPermission()
+	</script>
 
     <!-- Login form -->
     <main role="main" class="container">

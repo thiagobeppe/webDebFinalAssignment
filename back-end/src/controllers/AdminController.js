@@ -10,7 +10,7 @@ module.exports = {
         var usr = await Admin.findOne({'email': email})
         if (usr != null) {
           if (pwd == usr.password){
-            response.render('dashboard_admin',data=usr)
+            response.render('dashboard_admin', {usr:usr})
           }
           else {
             response.status(500).render("signin_admin")

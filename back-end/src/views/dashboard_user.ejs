@@ -17,6 +17,20 @@
 	
 	 <!-- Script para mudança de contraste -->
 	 <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
+
+
+	 <!-- Script para checar o localstorage-->
+	 <script type="text/javascript" >
+		function addPermission(email){
+			if (email != ""){
+				window.localStorage.setItem("email",email)
+			}
+			else {
+				alert("usuário inválido")
+			   window.history.back()
+			}
+		}
+	   </script>
   </head>
 
   <body>
@@ -48,84 +62,97 @@
 
     <!-- Login form -->
     <main role="main" class="container">
-	  <div class="jumbotron">
-        <div class="container">
-		  <!-- <h3 class="display-5">Bem-vindo, <%=//data.name%> </h3> -->
-		  <h3 class="display-5">Bem-vindo, Fulano </h3>
-          <p>Clique no botão abaixo para cadastrar um novo animal ou gerencie seus animais na tabela abaixo.</p>
-		  <button type="button" class="btn btn-nav btn-danger float-right">Logout</button>
-          <p><a class="btn btn-primary btn-lg" href="/pets/create" role="button">Cadastrar Novo &raquo;</a></p>
-        </div>
-      </div>
-      <table class="table">
-		  <thead>
-			<tr>
-			  <th scope="col">Animal</th>
-			  <th scope="col">Nome</th>
-			  <th scope="col">Sexo</th>
-			  <th scope="col">Raça</th>
-			  <th scope="col">Porte</th>
-			  <th scope="col">Situação</th>
-			  <th class="actions">Ações</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<% pets.forEach(function(pet) { %>
-			<tr>
-			  <td><%= pet.type %></td>
-			  <td><%= pet.name %></td>
-			  <td><%= pet.gender %></td>
-			  <td><%= pet.breed %></td>
-			  <td><%= pet.shape %></td>
-			  <td>
-			    <% if (pet.status == "True") { %>
-					<span class="badge badge-success">Aprovado</span>
-				<%} else { %>
-					<span class="badge badge-danger">Desaprovado</span>
-				<% } %>
-			  </td>
-			  <td class="actions">
-			    <!-- <a class="btn btn-success btn-sm" href="view.html">Visualizar</a> -->
-				<a class="btn btn-info btn-sm" href="/pets/edit/<%= pet._id %>">Editar</a>
-				<a class="btn btn-danger btn-sm"  href="/pets/delete/<%= pet._id %>" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			  </td>
-			</tr>
-			<% }) %>
-			<!-- <tr>
-			  <td>Cachorro</td>
-			  <td>Félix</td>
-			  <td>Macho</td>
-			  <td>Vira-lata</td>
-			  <td>Pequeno</td>
-			  <td><span class="badge badge-success">Aprovado</span></td>
-			  <td class="actions">
-			    <a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
-				<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
-				<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			  </td>
-			</tr>
-			<tr>
-			  <td>Cachorro</td>
-			  <td>Félix</td>
-			  <td>Macho</td>
-			  <td>Vira-lata</td>
-			  <td>Pequeno</td>
-			  <td><span class="badge badge-danger">Desaprovado</span></td>
-			  <td class="actions">
-			    <a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
-				<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
-				<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-			  </td> -->
-			</tr>
-		  </tbody>
-		</table>
-    </main>
-
-	<!-- Footer -->
-    <footer class="footer">
-      <div class="container text-center">
-        <span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
-      </div>
-    </footer>
+		<% if (locals.data) { %>
+			<script  type="text/javascript" language="JavaScript">
+				var data = <%-JSON.stringify(data)%>
+				addPermission( data.email)			
+			</script>
+			 <div class="jumbotron">
+				<div class="container">
+				  <!-- <h3 class="display-5">Bem-vindo, Fulano </h3> -->
+				  <h3 class="display-5"> Bem-vindo, <%= data.name%></h3>
+				  <p>Clique no botão abaixo para cadastrar um novo animal ou gerencie seus animais na tabela abaixo.</p>
+				  <button type="button" class="btn btn-nav btn-danger float-right">Logout</button>
+				  <p><a class="btn btn-primary btn-lg" href="/pets/create" role="button">Cadastrar Novo &raquo;</a></p>
+				</div>
+			  </div>
+			  <table class="table">
+				  <thead>
+					<tr>
+					  <th scope="col">Animal</th>
+					  <th scope="col">Nome</th>
+					  <th scope="col">Sexo</th>
+					  <th scope="col">Raça</th>
+					  <th scope="col">Porte</th>
+					  <th scope="col">Situação</th>
+					  <th class="actions">Ações</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<% pets.forEach(function(pet) { %>
+					<tr>
+					  <td><%= pet.type %></td>
+					  <td><%= pet.name %></td>
+					  <td><%= pet.gender %></td>
+					  <td><%= pet.breed %></td>
+					  <td><%= pet.shape %></td>
+					  <td>
+						<% if (pet.status == "True") { %>
+							<span class="badge badge-success">Aprovado</span>
+						<%} else { %>
+							<span class="badge badge-danger">Desaprovado</span>
+						<% } %>
+					  </td>
+					  <td class="actions">
+						<!-- <a class="btn btn-success btn-sm" href="view.html">Visualizar</a> -->
+						<a class="btn btn-info btn-sm" href="/pets/edit/<%= pet._id %>">Editar</a>
+						<a class="btn btn-danger btn-sm"  href="/pets/delete/<%= pet._id %>" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+					  </td>
+					</tr>
+					<% }) %>
+					<!-- <tr>
+					  <td>Cachorro</td>
+					  <td>Félix</td>
+					  <td>Macho</td>
+					  <td>Vira-lata</td>
+					  <td>Pequeno</td>
+					  <td><span class="badge badge-success">Aprovado</span></td>
+					  <td class="actions">
+						<a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
+						<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
+						<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+					  </td>
+					</tr>
+					<tr>
+					  <td>Cachorro</td>
+					  <td>Félix</td>
+					  <td>Macho</td>
+					  <td>Vira-lata</td>
+					  <td>Pequeno</td>
+					  <td><span class="badge badge-danger">Desaprovado</span></td>
+					  <td class="actions">
+						<a class="btn btn-success btn-sm" href="view.html">Visualizar</a>
+						<a class="btn btn-info btn-sm" href="edit.html">Editar</a>
+						<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+					  </td> -->
+					</tr>
+				  </tbody>
+				</table>
+			</main>
+		
+			<!-- Footer -->
+			<footer class="footer">
+			  <div class="container text-center">
+				<span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
+			  </div>
+			</footer>
+		
+			
+		<% } else { %>
+			<script type="text/javascript" language="JavaScript">
+				alert("Usuário Inválido !!")
+				window.history.back()
+			</script>
+		<% } %>
   </body>
 </html>
