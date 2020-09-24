@@ -31,7 +31,17 @@
 			}
 		}
 	   </script>
-  </head>
+
+
+	<script type="text/javascript" >
+			function verifyPermissionHeader(){
+				if (window.localStorage.getItem("email") == "") {
+					return false
+				}
+				return true
+			}
+   </script>
+</head>
 
   <body>
 
@@ -62,15 +72,26 @@
 
     <!-- Login form -->
     <main role="main" class="container">
-		<% if (locals.data) { %>
+		<% function verifyPermission() {return true}%> 
+
+		<% if (locals.data || verifyPermission()) { %>
+			<% if (locals.data) {%>
 			<script  type="text/javascript" language="JavaScript">
 				var data = <%-JSON.stringify(data)%>
 				addPermission( data.email)			
 			</script>
+			<%} else {%>
+				<script type="text/javascript">
+					if (!verifyPermissionHeader()){
+						alert("Usuário Inválido !!")
+						window.history.back()
+					}
+				</script>
+			<% }%>
 			 <div class="jumbotron">
 				<div class="container">
 				  <!-- <h3 class="display-5">Bem-vindo, Fulano </h3> -->
-				  <h3 class="display-5"> Bem-vindo, <%= data.name%></h3>
+				  <h3 class="display-5">Seja bem-vindo</h3>
 				  <p>Clique no botão abaixo para cadastrar um novo animal ou gerencie seus animais na tabela abaixo.</p>
 				  <button type="button" class="btn btn-nav btn-danger float-right">Logout</button>
 				  <p><a class="btn btn-primary btn-lg" href="/pets/create" role="button">Cadastrar Novo &raquo;</a></p>

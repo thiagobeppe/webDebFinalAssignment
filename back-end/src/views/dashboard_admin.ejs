@@ -28,14 +28,34 @@
 			}
 		}
 	   </script>
+
+	<script type="text/javascript" >
+		function verifyPermissionHeader(){
+			if (window.localStorage.getItem("email-admin") == "") {
+				return false
+			}
+			return true
+		}
+	</script>
+
   </head>
 
   <body>
-	<% if (locals.usr) { %>
+	<% function verifyPermission() {return true}%> 
+	<% if (locals.usr || verifyPermission()) { %>
+		<% if (locals.usr) { %>
 		<script  type="text/javascript" language="JavaScript">
 			var data = <%-JSON.stringify(usr)%>
 			addPermission( usr.email)			
 		</script>
+		<%} else {%>
+			<script type="text/javascript">
+				if (!verifyPermissionHeader()){
+					alert("Usuário Inválido !!")
+					window.history.back()
+				}
+		</script>
+		<% }%>
 		<header>
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
