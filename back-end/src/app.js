@@ -57,9 +57,9 @@ app.get('/dashboard-admin/pets', function (req, res) {
   res.render('dashboard_admin');
 });
 
-app.get('/dashboard-users/pets', function (req, res) {
-  res.render('dashboard_user');
-});
+// app.get('/dashboard-users/pets', function (req, res) {
+//   res.render('dashboard_user');
+// });
 
 //Fim das rotas dos arquivos EJS
 

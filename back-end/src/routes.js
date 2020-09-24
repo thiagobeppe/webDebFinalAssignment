@@ -13,7 +13,7 @@ routes.get("/", PetController.listpetsdash)
 routes.get("/dashboard-user/", PetController.listpetsdashuser)
 
 routes.post("/pets/newpet", PetController.addpet);
-routes.post("/pets/edit/:id", PetController.editpet);
+routes.get("/pets/edit/:id", PetController.editpet);
 routes.post("/pets/update/:id", PetController.updatepet);
 routes.get("/pets", PetController.index);
 

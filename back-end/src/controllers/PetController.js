@@ -56,8 +56,8 @@ module.exports = {
   },
 
   async updatepet(request, response, next){
-    PI.findByIdAndUpdate({_id: request.params.id}, request.body).then(function(){
-      response.redirect('/dashboard-users/pets');
+    Pet.findByIdAndUpdate({_id: request.params.id}, request.body).then(function(){
+      response.redirect('/dashboard-user');
     }).catch(next);
   },
 };

@@ -50,26 +50,42 @@
     <main role="main" class="container">
       <div class="jumbotron">
         <h1>Cadastro de Pet</h1>
-      <form action="newpet" method="post">
+      <form action="/pets/update/<%= pet._id %>" method="post">
 		  <div class="row">
 			<div id="animal" class="form-group col-md-6">
 			  <label for="inputAnimal">Animal</label>
 			  <select id="animal" class="form-control" id="inputAnimal" name="type" required>
-			    <option>Cachorro</option>
-			    <option>Gato</option>
+				<% if (pet.type == "Cachorro") { %>
+					<option selected>Cachorro</option>
+			    	<option>Gato</option>
+				<%} else { %>
+					<option>Cachorro</option>
+			    	<option selected>Gato</option>
+				<% } %>
 			  </select>
 			</div>
 			<div class="form-group col-md-6">
 			  <label for="inputSexo">Sexo</label>
 			  <div id="sexo" class="form-control">
-				  <div id="sexo" class="form-check form-check-inline">
-					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Macho" checked>
-					<label id="sexo" class="form-check-label" for="inlineRadio1">Macho</label>
-				  </div>
-				  <div class="form-check form-check-inline">
-					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Fẽmea">
-					<label id="sexo" class="form-check-label" for="inlineRadio2">Fêmea</label>
-				  </div>
+				<% if (pet.gender == "Macho") { %>
+					  <div id="sexo" class="form-check form-check-inline">
+						<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Macho" checked>
+						<label id="sexo" class="form-check-label" for="inlineRadio1">Macho</label>
+					  </div>
+					  <div class="form-check form-check-inline">
+						<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Fẽmea">
+						<label id="sexo" class="form-check-label" for="inlineRadio2">Fêmea</label>
+					  </div>
+				<%} else { %>
+					  <div id="sexo" class="form-check form-check-inline">
+						<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Macho">
+						<label id="sexo" class="form-check-label" for="inlineRadio1">Macho</label>
+					  </div>
+					  <div class="form-check form-check-inline">
+						<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Fẽmea" checked>
+						<label id="sexo" class="form-check-label" for="inlineRadio2">Fêmea</label>
+					  </div>
+				<% } %>  
 			  </div>
 			</div>
 		  </div>
