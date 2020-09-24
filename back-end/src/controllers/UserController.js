@@ -29,7 +29,7 @@ module.exports = {
     else   {response.status(500).render("signin")}
   },
 
-  async adduser(request, response) {
+  async addUser(request, response) {
     let email = request.body.email;
     let password = request.body.password;
     let name = request.body.name;
@@ -59,9 +59,30 @@ module.exports = {
     });
   },
 
+  async editUser(request,response){
+    User.findOne({_id: request.params.id}).then(function(user){
+      response.render('editUser', {user: user});
+    }).catch(next);
+  },
+
+  async updateUser(request,response){
+    User.findByIdAndUpdate({_id: request.params.id}, request.body).then(function(){
+      response.redirect('/dashboard-admin/users');
+    }).catch(next);
+  },
+
+  async deleteUser(request,response){
+    User.findOneAndDelete({_id: request.params.id}).then(function(user){
+      console.log("Registo eliminado com sucesso!");
+      response.redirect('/dashboard-admin/users');
+    }).catch(next);
+  },
+
   async signInUser(request,response){
     response.render('signin')
   },
+
+
   // async storeUser(request, response) {
   //   const {
   //     email,

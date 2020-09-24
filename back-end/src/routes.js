@@ -20,7 +20,11 @@ routes.get("/pets", PetController.index);
 
 routes.get("/users", UserController.index);
 routes.post("/users/login", UserController.login);
-routes.post('/users/newuser', UserController.adduser);
+routes.post('/users/newuser', UserController.addUser);
+routes.get('/users/edit/:id', UserController.editUser);
+routes.post('/users/update/:id', UserController.updateUser);
+routes.get('/users/delete/:id', UserController.deleteUser);
+
 
 routes.get("/dashboard-admin/users", UserController.listusers);
 routes.post("/admin/login", AdminController.login)
