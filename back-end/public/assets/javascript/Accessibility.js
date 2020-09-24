@@ -22,12 +22,19 @@ function baseName(str)
 
 window.onload = initTheme()
 function initTheme() {
-    if (!localStorage.getItem('stylesheet')) {
+    onStorage = localStorage.getItem('stylesheet')
+    if (!onStorage) {
         console.log("First access!")
     }
     else {
-        var theme = localStorage.getItem('stylesheet')
-        swapStyleSheet(`/assets/css/${theme}.css`)
+        var styleNow = document.getElementById("contrast").href;
+        styleNow = baseName(styleNow)
+        if (onStorage.includes("contrast")) {
+            swapStyleSheet(`/assets/css/${styleNow}_contrast.css`)
+        }
+        else {
+            swapStyleSheet(`/assets/css/${styleNow}.css`)
+        }
     }
 }
 
@@ -36,13 +43,11 @@ function initiate() {
     var bname = baseName(styleNow.href)
         
     if (bname.includes("contrast")) {
-        console.log(bname)
         bname = bname.split('_')[0]
-        var prefered = `${bname}`
-        console.log(bname)
+        var prefered = ``
         swapStyleSheet(`/assets/css/${bname}.css`);
     } else {      
-        var prefered = `${bname}_contrast`
+        var prefered = `contrast`
         swapStyleSheet(`/assets/css/${bname}_contrast.css`);        
     }
     
