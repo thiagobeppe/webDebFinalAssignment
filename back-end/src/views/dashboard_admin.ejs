@@ -32,9 +32,9 @@
 	<script type="text/javascript" >
 		function verifyPermissionHeader(){
 			if (window.localStorage.getItem("email-admin") == "") {
-				return false
+				return true
 			}
-			return true
+			return false
 		}
 	</script>
 
