@@ -35,12 +35,23 @@
 
 	<script type="text/javascript" >
 			function verifyPermissionHeader(){
-				if (window.localStorage.getItem("email") == "") {
-					return true
-				}
-				return false
+				return window.localStorage.getItem("email") != ""
 			}
    </script>
+
+   <script type="text/javascript">
+	function dashboard(){
+		window.localStorage.getItem("email") != "" ? document.getElementById("header-dash").href = "/dashboard-user" : document.getElementById("header-dash").href = "/" 
+	}
+	</script>
+
+<script type="text/javascript" >
+	function logout(){
+		console.log("clicou")
+		window.localStorage.removeItem("email")
+		window.location.replace("http://localhost:3000/")
+	}
+</script>
 </head>
 
   <body>
@@ -55,7 +66,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Dashboard</a>
+				<a class="nav-link" onclick="dashboard()" id = "header-dash" >Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/users/signin">SignIn</a>
@@ -93,7 +104,7 @@
 				  <!-- <h3 class="display-5">Bem-vindo, Fulano </h3> -->
 				  <h3 class="display-5">Seja bem-vindo</h3>
 				  <p>Clique no botão abaixo para cadastrar um novo animal ou gerencie seus animais na tabela abaixo.</p>
-				  <button type="button" class="btn btn-nav btn-danger float-right">Logout</button>
+				  <button type="button" class="btn btn-nav btn-danger float-right" onclick=logout()>Logout</button>
 				  <p><a class="btn btn-primary btn-lg" href="/pets/create" role="button">Cadastrar Novo &raquo;</a></p>
 				</div>
 			  </div>

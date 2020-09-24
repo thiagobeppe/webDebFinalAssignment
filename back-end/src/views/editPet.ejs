@@ -26,6 +26,18 @@
 		  }
 		}
 	  </script>
+		<script type="text/javascript">
+				function dashboard(){
+					window.localStorage.getItem("email") != "" ? document.getElementById("header-dash").href = "/dashboard-user" : document.getElementById("header-dash").href = "/" 
+				}
+		</script>
+		
+		<script type="text/javascript" >
+			function logout(){
+				window.localStorage.removeItem("email")
+				window.location.href("localhost:3000/")
+			}
+		</script>
   </head>
 
   <body>
@@ -40,7 +52,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Dashboard</a>
+              <a class="nav-link" onclick="dashboard()" id = "header-dash"  cursor="pointer">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/users/signin">SignIn</a>
