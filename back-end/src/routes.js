@@ -15,6 +15,7 @@ routes.get("/dashboard-user/", PetController.listpetsdashuser)
 routes.post("/pets/newpet", PetController.addpet);
 routes.get("/pets/edit/:id", PetController.editpet);
 routes.post("/pets/update/:id", PetController.updatepet);
+routes.get("/pets/delete/:id", PetController.deletepet);
 routes.get("/pets", PetController.index);
 
 routes.get("/users", UserController.index);

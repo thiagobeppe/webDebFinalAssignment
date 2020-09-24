@@ -87,7 +87,7 @@
 			  <td class="actions">
 			    <!-- <a class="btn btn-success btn-sm" href="view.html">Visualizar</a> -->
 				<a class="btn btn-info btn-sm" href="/pets/edit/<%= pet._id %>">Editar</a>
-				<a class="btn btn-danger btn-sm"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+				<a class="btn btn-danger btn-sm"  href="/pets/delete/<%= pet._id %>" data-toggle="modal" data-target="#delete-modal">Excluir</a>
 			  </td>
 			</tr>
 			<% }) %>

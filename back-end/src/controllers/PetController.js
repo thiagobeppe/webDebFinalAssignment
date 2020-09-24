@@ -60,4 +60,11 @@ module.exports = {
       response.redirect('/dashboard-user');
     }).catch(next);
   },
+
+  async deletepet(request, response, next){
+    Pet.findOneAndDelete({_id: request.params.id}).then(function(pet){
+      console.log("Registo eliminado com sucesso!");
+      response.redirect('/dashboard-user');
+    }).catch(next);
+  },
 };
