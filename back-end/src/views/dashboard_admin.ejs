@@ -31,10 +31,7 @@
 
 	<script type="text/javascript" >
 		function verifyPermissionHeader(){
-			if (window.localStorage.getItem("email-admin") == "") {
-				return true
-			}
-			return false
+			return window.localStorage.getItem("email-admin") != ""
 		}
 	</script>
 
