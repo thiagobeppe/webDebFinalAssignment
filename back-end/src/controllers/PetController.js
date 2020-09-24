@@ -7,9 +7,15 @@ module.exports = {
     return response.json(pets);
   },
 
-  async listpets(request, response) {
+  async listpetsdash(request, response) {
     Pet.find({}).then(function(pet){
       response.render('dashboard', {pets: pet});
+    });
+  },
+
+  async listpetsdashuser(request, response) {
+    Pet.find({}).then(function(pet){
+      response.render('dashboard_user', {pets: pet});
     });
   },
 
@@ -41,5 +47,17 @@ module.exports = {
     Pet.create(data).then(function(pet){
       response.render('newPet')
     });
+  },
+
+  async editpet(request, response, next){
+    Pet.findOne({_id: request.params.id}).then(function(pet){
+      response.render('editPet', {pet: pet});
+    }).catch(next);
+  },
+
+  async updatepet(request, response, next){
+    PI.findByIdAndUpdate({_id: request.params.id}, request.body).then(function(){
+      response.redirect('/dashboard-users/pets');
+    }).catch(next);
   },
 };
