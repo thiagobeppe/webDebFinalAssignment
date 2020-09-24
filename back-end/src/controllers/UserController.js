@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Pet = require("../models/Pet");
 const { request } = require("express");
 
 module.exports = {
@@ -20,7 +21,10 @@ module.exports = {
     var usr = await User.findOne({'email': email})
     if (usr != null) {
       if (pwd == usr.password){
-        response.render('dashboard_user',data=usr)
+        Pet.find({}).then(function(pet){
+          response.render('dashboard_user', {pets: pet, data: usr});
+        });
+        // response.render('dashboard_user',data=usr)
       }
       else {
         response.status(500).render("signin")
