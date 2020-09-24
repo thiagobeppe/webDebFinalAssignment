@@ -18,17 +18,24 @@
      <!-- Script para mudança de contraste -->
      <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
      <script type="text/javascript" language="JavaScript">
-      function verifyPermission(){
-        if (window.localStorage.getItem("email-admin") == "") {
-          alert("Usuário Inválido !!")
-				  window.history.back()
+      function addPermission(email){
+        if (email != ""){
+          window.localStorage.setItem("email-admin",email)
         }
-      }
+        else {
+          alert("usuário inválido")
+          window.history.back()
+        }
+		  }
     </script>
   </head>
 
   <body>
-
+    <% if (locals.usr) { %>
+      <script  type="text/javascript" language="JavaScript">
+        var data = <%-JSON.stringify(usr)%>
+        addPermission( usr.email)			
+      </script>
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -53,10 +60,6 @@
         </div>
       </nav>
     </header>
-
-    <script type="text/javascript" language="JavaScript">
-      verifyPermission()
-    </script>
     
     <!-- Login form -->
     <main role="main" class="container">
@@ -104,5 +107,11 @@
         <span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
       </div>
     </footer>
+    <% } else { %>
+      <script type="text/javascript" language="JavaScript">
+        alert("Admin Inválido !!")
+        window.history.back()
+      </script>
+    <% } %>
   </body>
 </html>
