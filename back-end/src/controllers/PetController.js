@@ -8,14 +8,20 @@ module.exports = {
   },
 
   async listpetsdash(request, response) {
-    Pet.find({}).then(function(pet){
-      response.render('dashboard', {pets: pet});
+    Pet.find({}).then(function (pet) {
+      response.render("dashboard", { pets: pet });
     });
   },
 
   async listpetsdashuser(request, response) {
-    Pet.find({}).then(function(pet){
-      response.render('dashboard_user', {pets: pet});
+    Pet.find({}).then(function (pet) {
+      response.render("dashboard_user", { pets: pet });
+    });
+  },
+
+  async listpetsdashadmin(request, response) {
+    Pet.find({}).then(function (pet) {
+      response.render("dashboard_admin", { pets: pet });
     });
   },
 
@@ -41,30 +47,51 @@ module.exports = {
       age: age,
       status: status,
       obs: obs,
-      owner: owner
+      owner: owner,
     };
 
-    Pet.create(data).then(function(pet){
-      response.render('newPet')
+    Pet.create(data).then(function (pet) {
+      response.render("newPet");
     });
   },
 
-  async editpet(request, response, next){
-    Pet.findOne({_id: request.params.id}).then(function(pet){
-      response.render('editPet', {pet: pet});
-    }).catch(next);
+  async editpet(request, response, next) {
+    Pet.findOne({ _id: request.params.id })
+      .then(function (pet) {
+        response.render("editPet", { pet: pet });
+      })
+      .catch(next);
   },
 
-  async updatepet(request, response, next){
-    Pet.findByIdAndUpdate({_id: request.params.id}, request.body).then(function(){
-      response.redirect('/dashboard-user');
-    }).catch(next);
+  async updatepet(request, response, next) {
+    Pet.findByIdAndUpdate({ _id: request.params.id }, request.body)
+      .then(function () {
+        response.redirect("/dashboard-user");
+      })
+      .catch(next);
   },
 
-  async deletepet(request, response, next){
-    Pet.findOneAndDelete({_id: request.params.id}).then(function(pet){
-      console.log("Registo eliminado com sucesso!");
-      response.redirect('/dashboard-user');
-    }).catch(next);
+  async aprovepet(request, response, next) {
+    Pet.findByIdAndUpdate({ _id: request.params.id }, { status: "True" })
+      .then(function () {
+        response.redirect("/dashboard-admin/pets");
+      })
+      .catch(next);
+  },
+  async desaprovepet(request, response, next) {
+    Pet.findByIdAndUpdate({ _id: request.params.id }, { status: "False" })
+      .then(function () {
+        response.redirect("/dashboard-admin/pets");
+      })
+      .catch(next);
+  },
+
+  async deletepet(request, response, next) {
+    Pet.findOneAndDelete({ _id: request.params.id })
+      .then(function (pet) {
+        console.log("Registo eliminado com sucesso!");
+        response.redirect("/dashboard-user");
+      })
+      .catch(next);
   },
 };
