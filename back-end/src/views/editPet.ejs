@@ -20,7 +20,7 @@
 
 	 <script type="text/javascript" language="JavaScript">
 		function verifyPermission(){
-		  if (window.localStorage.getItem("email") == "") {
+		  if (window.localStorage.getItem("email") == "" || window.localStorage.getItem("email") == null ) {
 			alert("Usuário Inválido !!")
 					window.history.back()
 		  }

@@ -40,7 +40,7 @@
 
     <script type="text/javascript">
       function verifyPermissionHeader() {
-        return window.localStorage.getItem("email-admin") != "";
+        return window.localStorage.getItem("email-admin") != ""  && window.localStorage.getItem("email-admin") != null;
       }
     </script>
 
