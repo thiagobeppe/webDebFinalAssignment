@@ -10,13 +10,13 @@
     <title>Adocão</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link id="contrast" href="assets/css/signin.css" rel="stylesheet">
-  
-    <!-- Script para mudança de contraste -->
-	  <script type="application/javascript" src="../../back-end//src/controllers/Accessibility.js"></script>
+    <link id="contrast" href="/assets/css/signin_admin.css" rel="stylesheet">
+
+     <!-- Script para mudança de contraste -->
+     <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
   </head>
 
   <body>
@@ -31,10 +31,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SignIn</a>
+              <a class="nav-link" href="/admin/signin">SignIn</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -48,17 +48,17 @@
 
     <!-- Login form -->
     <main role="main" class="form-container text-center">
-      <form class="form-signin"action="/login" method="post">
+      <form class="form-signin" action="/admin/login" method="post">
       <img class="mb-4" src="https://img2.gratispng.com/20180802/xlu/kisspng-clip-art-paw-openclipart-free-content-vector-graph-tigger-cub-paw-print-diecuts-scrapbooking-scouting-5b6349336c2609.075164311533233459443.jpg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Login - Usuário</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Login - Administrador</h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email"required autofocus>
       <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 	  </br>
 	  </br>
-      <a class="mt-5 mb-3 text-muted" href="">Ainda não possui cadastro?</a>
+      <!-- <a class="mt-5 mb-3 text-muted" href="">Ainda não possui cadastro?</a> -->
     </form>
     </main>
 

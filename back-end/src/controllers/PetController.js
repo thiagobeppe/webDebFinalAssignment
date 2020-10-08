@@ -7,35 +7,91 @@ module.exports = {
     return response.json(pets);
   },
 
-  async storePet(request, response) {
-    const {
-      name,
-      breed,
-      type,
-      shape,
-      gender,
-      color,
-      age,
-      status,
-      obs,
-    } = request.body;
+  async listpetsdash(request, response) {
+    Pet.find({}).then(function (pet) {
+      response.render("dashboard", { pets: pet });
+    });
+  },
 
-    let pet = await Pet.findOne({ name });
+  async listpetsdashuser(request, response) {
+    Pet.find({}).then(function (pet) {
+      response.render("dashboard_user", { pets: pet });
+    });
+  },
 
-    if (!pet) {
-      pet = await Pet.create({
-        name,
-        breed,
-        type,
-        shape,
-        gender,
-        color,
-        age,
-        status,
-        obs,
-      });
-    }
+  async listpetsdashadmin(request, response) {
+    Pet.find({}).then(function (pet) {
+      response.render("dashboard_admin", { pets: pet });
+    });
+  },
 
-    return response.json(pet);
+  async addpet(request, response) {
+    let name = request.body.name;
+    let breed = request.body.breed;
+    let type = request.body.type;
+    let shape = request.body.shape;
+    let gender = request.body.gender;
+    let color = request.body.color;
+    let age = request.body.age;
+    let status = request.body.status;
+    let obs = request.body.obs;
+    let owner = request.body.owner;
+
+    let data = {
+      name: name,
+      breed: breed,
+      type: type,
+      shape: shape,
+      gender: gender,
+      color: color,
+      age: age,
+      status: status,
+      obs: obs,
+      owner: owner,
+    };
+
+    Pet.create(data).then(function (pet) {
+      response.render("newPet");
+    });
+  },
+
+  async editpet(request, response, next) {
+    Pet.findOne({ _id: request.params.id })
+      .then(function (pet) {
+        response.render("editPet", { pet: pet });
+      })
+      .catch(next);
+  },
+
+  async updatepet(request, response, next) {
+    Pet.findByIdAndUpdate({ _id: request.params.id }, request.body)
+      .then(function () {
+        response.redirect("/dashboard-user");
+      })
+      .catch(next);
+  },
+
+  async aprovepet(request, response, next) {
+    Pet.findByIdAndUpdate({ _id: request.params.id }, { status: "True" })
+      .then(function () {
+        response.redirect("/dashboard-admin/pets");
+      })
+      .catch(next);
+  },
+  async desaprovepet(request, response, next) {
+    Pet.findByIdAndUpdate({ _id: request.params.id }, { status: "False" })
+      .then(function () {
+        response.redirect("/dashboard-admin/pets");
+      })
+      .catch(next);
+  },
+
+  async deletepet(request, response, next) {
+    Pet.findOneAndDelete({ _id: request.params.id })
+      .then(function (pet) {
+        console.log("Registo eliminado com sucesso!");
+        response.redirect("/dashboard-user");
+      })
+      .catch(next);
   },
 };

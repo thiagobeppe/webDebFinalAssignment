@@ -13,23 +13,61 @@
     <title>Adocão</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link
       id="contrast"
-      href="assets/css/dashboard_admin.css"
+      href="/assets/css/dashboard_admin.css"
       rel="stylesheet"
     />
 
     <!-- Script para mudança de contraste -->
     <script
       type="application/javascript"
-      src="../../back-end//src/controllers/Accessibility.js"
+      src="/assets/javascript/Accessibility.js"
     ></script>
+    <script type="text/javascript">
+      function addPermission(email) {
+        if (email != "") {
+          window.localStorage.setItem("email-admin", email);
+        } else {
+          alert("usuário inválido");
+          window.history.back();
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      function verifyPermissionHeader() {
+        return window.localStorage.getItem("email-admin") != "";
+      }
+    </script>
+
+    <script type="text/javascript">
+      function logout() {
+        console.log("clicou");
+        window.localStorage.removeItem("email-admin");
+        window.location.replace("http://localhost:3000/");
+      }
+    </script>
   </head>
 
   <body>
+    <% function verifyPermission() {return true}%> <% if (locals.usr ||
+    verifyPermission()) { %> <% if (locals.usr) { %>
+    <script type="text/javascript" language="JavaScript">
+      var data = <%-JSON.stringify(usr)%>
+      addPermission( usr.email)
+    </script>
+    <%} else {%>
+    <script type="text/javascript">
+      if (!verifyPermissionHeader()) {
+        alert("Usuário Inválido !!");
+        window.history.back();
+      }
+    </script>
+    <% }%>
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -48,10 +86,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SignIn</a>
+              <a class="nav-link" href="/users/signin">SignIn</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -116,63 +154,38 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Cachorro</td>
-            <td>Félix</td>
-            <td>Macho</td>
-            <td>Vira-lata</td>
-            <td>Pequeno</td>
-            <td><span class="badge badge-success">Aprovado</span></td>
-            <td class="actions">
-              <a class="btn btn-success btn-sm" href="#">Aprovar</a>
-              <a
-                class="btn btn-danger btn-sm"
-                href="#"
-                data-toggle="modal"
-                data-target="#delete-modal"
-                >Desaprovar</a
-              >
-            </td>
+            <% pets.forEach(function(pet) { %>
           </tr>
+
           <tr>
-            <th scope="row">2</th>
-            <td>Cachorro</td>
-            <td>Félix</td>
-            <td>Macho</td>
-            <td>Vira-lata</td>
-            <td>Pequeno</td>
-            <td><span class="badge badge-warning">Aguardando</span></td>
+            <td><%= pet.type %></td>
+            <td><%= pet.name %></td>
+            <td><%= pet.gender %></td>
+            <td><%= pet.breed %></td>
+            <td><%= pet.shape %></td>
+            <td>
+              <% if (pet.status == "True") { %>
+              <span class="badge badge-success">Aprovado</span>
+              <%} else { %>
+              <span class="badge badge-danger">Desaprovado</span>
+              <% } %>
+            </td>
             <td class="actions">
-              <a class="btn btn-success btn-sm" href="view.html">Aprovar</a>
-              <a class="btn btn-info btn-sm" href="edit.html">Detalhes</a>
+              <a
+                class="btn btn-success btn-sm"
+                href="/pets/aprovepet/<%= pet._id %>"
+                >Aprovar</a
+              >
               <a
                 class="btn btn-danger btn-sm"
-                href="#"
+                href="/pets/desaprovepet/<%= pet._id %>"
                 data-toggle="modal"
                 data-target="#delete-modal"
                 >Desaprovar</a
               >
             </td>
           </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Cachorro</td>
-            <td>Félix</td>
-            <td>Macho</td>
-            <td>Vira-lata</td>
-            <td>Pequeno</td>
-            <td><span class="badge badge-warning">Aguardando</span></td>
-            <td class="actions">
-              <a class="btn btn-success btn-sm" href="view.html">Aprovar</a>
-              <a class="btn btn-info btn-sm" href="edit.html">Detalhes</a>
-              <a
-                class="btn btn-danger btn-sm"
-                href="#"
-                data-toggle="modal"
-                data-target="#delete-modal"
-                >Desaprovar</a
-              >
-            </td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </main>
@@ -183,5 +196,11 @@
         <span class="text-muted">Feito com <b>♥</b> pelos devs bons</span>
       </div>
     </footer>
+    <% } else { %>
+    <script type="text/javascript" language="JavaScript">
+      alert("Admin Inválido !!");
+      window.history.back();
+    </script>
+    <% } %>
   </body>
 </html>

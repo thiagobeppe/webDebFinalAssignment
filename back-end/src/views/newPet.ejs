@@ -10,13 +10,34 @@
     <title>Adocão</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="/assets/bootstrap/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link id="contrast" href="assets/css/newPet.css" rel="stylesheet">
+	<link id="contrast" href="/assets/css/newPet.css" rel="stylesheet">
 	
-	<!-- Script para mudança de contraste -->
-	<script type="application/javascript" src="../../back-end//src/controllers/Accessibility.js"></script>
+	 <!-- Script para mudança de contraste -->
+	 <script type="application/javascript" src="/assets/javascript/Accessibility.js"></script>
+	 <script type="text/javascript" language="JavaScript">
+		function verifyPermission(){
+		  if (window.localStorage.getItem("email") == "") {
+			alert("Usuário Inválido !!")
+					window.history.back()
+		  }
+		}
+	  </script>
+	
+	<script type="text/javascript">
+			function dashboard(){
+				window.localStorage.getItem("email") != "" ? document.getElementById("header-dash").href = "/dashboard-user" : document.getElementById("header-dash").href = "/" 
+			}
+		</script>
+
+<script type="text/javascript" >
+	function logout(){
+		window.localStorage.removeItem("email")
+		window.location.href("localhost:3000/")
+	}
+</script>
   </head>
 
   <body>
@@ -31,30 +52,33 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
+				<a class="nav-link" onclick="dashboard()" id = "header-dash" >Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SignIn</a>
+              <a class="nav-link" href="/users/signin">SignIn</a>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <button id="changeCSS" type="button" onclick=initiate() class="btn btn-nav btn-primary">Alto Contraste</button>
-            <button id="increaseSize" onclick=changeFontSize(2) type="button" class="btn btn-nav btn-primary">A+</button>
-            <button id="decreaseSize" onclick=changeFontSize(-2) type="button" class="btn btn-nav btn-primary">A-</button>
+          <form id="newPet" class="form-inline mt-2 mt-md-0">
+						<button id="changeCSS" type="button" onclick=initiate() class="btn btn-nav btn-primary">Alto Contraste</button>
+						<button id="increaseSize" onclick=changeFontSize(2) type="button" class="btn btn-nav btn-primary">A+</button>
+						<button id="decreaseSize" onclick=changeFontSize(-2) type="button" class="btn btn-nav btn-primary">A-</button>
           </form>
         </div>
       </nav>
-    </header>
+	</header>
+	<script type="text/javascript" language="JavaScript">
+		verifyPermission()
+	</script>
 
     <!-- Login form -->
     <main role="main" class="container">
       <div class="jumbotron">
         <h1>Cadastro de Pet</h1>
-        <form id="newPet">
+      <form action="newpet" method="post">
 		  <div class="row">
 			<div id="animal" class="form-group col-md-6">
 			  <label for="inputAnimal">Animal</label>
-			  <select id="animal" class="form-control" id="inputAnimal">
+			  <select id="animal" class="form-control" id="inputAnimal" name="type" required>
 			    <option>Cachorro</option>
 			    <option>Gato</option>
 			  </select>
@@ -63,11 +87,11 @@
 			  <label for="inputSexo">Sexo</label>
 			  <div id="sexo" class="form-control">
 				  <div id="sexo" class="form-check form-check-inline">
-					<input id="sexo" class="form-check-input" type="radio" name="inputSexo" id="inlineRadio1" value="option1">
+					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Macho" checked>
 					<label id="sexo" class="form-check-label" for="inlineRadio1">Macho</label>
 				  </div>
 				  <div class="form-check form-check-inline">
-					<input id="sexo" class="form-check-input" type="radio" name="inputSexo" id="inlineRadio2" value="option2">
+					<input id="sexo" class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Fẽmea">
 					<label id="sexo" class="form-check-label" for="inlineRadio2">Fêmea</label>
 				  </div>
 			  </div>
@@ -76,31 +100,31 @@
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label for="inputName">Nome</label>
-				<input type="text" class="form-control" id="inputName" placeholder="Nome do Animal">
+				<input type="text" class="form-control" id="inputName" placeholder="Nome do Animal" name="name" required>
 			</div>
 		  </div>
 		  <div class="row">
 			<div class="form-group col-md-3">
 				<label for="inputCor">Cor</label>
-				<input type="text" class="form-control" id="inputCor" placeholder="Cor do Animal">
+				<input type="text" class="form-control" id="inputCor" placeholder="Cor do Animal" name="color" required>
 			</div>
 			<div class="form-group col-md-3">
 				<label for="inputRaca">Raça</label>
-				<input type="text" class="form-control" id="inputRaca" placeholder="Raça do Animal">
+				<input type="text" class="form-control" id="inputRaca" placeholder="Raça do Animal" name="breed" required> 
 			</div>
 			<div class="form-group col-md-3">
 				<label for="inputPorte">Porte</label>
-				<input type="text" class="form-control" id="inputPorte" placeholder="Porte do Animal">
+				<input type="text" class="form-control" id="inputPorte" placeholder="Porte do Animal" name="shape" required>
 			</div>
 			<div class="form-group col-md-3">
 				<label for="inputIdade">Idade</label>
-				<input type="text" class="form-control" id="inputIdade" placeholder="x Anos">
+				<input type="text" class="form-control" id="inputIdade" placeholder="x Anos" name="age" required>
 			</div>
 		  </div>
 		  <div class="row">
 			<div id="newPet" class="form-group col-md-12">
 			  <label for="inputObs">Observações</label>
-			  <textarea class="form-control" id="inputObs"></textarea>
+			  <textarea class="form-control" id="inputObs" name="obs"></textarea>
 			</div>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Cadastrar</button>
