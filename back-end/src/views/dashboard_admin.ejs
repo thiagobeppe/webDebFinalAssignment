@@ -40,7 +40,7 @@
 
     <script type="text/javascript">
       function verifyPermissionHeader() {
-        return window.localStorage.getItem("email-admin") != "";
+        return window.localStorage.getItem("email-admin") != ""  && window.localStorage.getItem("email-admin") != null;
       }
     </script>
 
@@ -58,7 +58,7 @@
     verifyPermission()) { %> <% if (locals.usr) { %>
     <script type="text/javascript" language="JavaScript">
       var data = <%-JSON.stringify(usr)%>
-      addPermission( usr.email)
+      addPermission( data.email)
     </script>
     <%} else {%>
     <script type="text/javascript">
@@ -141,7 +141,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Animal</th>
             <th scope="col">Nome</th>
             <th scope="col">Sexo</th>
@@ -152,10 +151,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
             <% pets.forEach(function(pet) { %>
-          </tr>
 
           <tr>
             <td><%= pet.type %></td>
@@ -166,13 +162,15 @@
             <td>
               <% if (pet.status == "True") { %>
               <span class="badge badge-success">Aprovado</span>
+              <%} else if (pet.status == "Waiting") { %>
+                <span class="badge badge-warning">Aguardando</span>
               <%} else { %>
               <span class="badge badge-danger">Desaprovado</span>
               <% } %>
             </td>
             <td class="actions">
               <a
-                class="btn btn-success btn-sm"
+                class="btn btn-success btn-sm" data-method="patch"
                 href="/pets/aprovepet/<%= pet._id %>"
                 >Aprovar</a
               >

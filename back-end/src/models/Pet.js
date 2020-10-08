@@ -10,7 +10,7 @@ const PetSchema = new mongoose.Schema({
   age: String,
   status: {
     type: String,
-    default: "False",
+    default: "Waiting",
   },
   obs: String,
   owner: String,

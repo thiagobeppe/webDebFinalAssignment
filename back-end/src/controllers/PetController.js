@@ -51,7 +51,7 @@ module.exports = {
     };
 
     Pet.create(data).then(function (pet) {
-      response.render("newPet");
+      response.redirect("/dashboard-user");
     });
   },
 
@@ -78,6 +78,7 @@ module.exports = {
       })
       .catch(next);
   },
+  
   async desaprovepet(request, response, next) {
     Pet.findByIdAndUpdate({ _id: request.params.id }, { status: "False" })
       .then(function () {

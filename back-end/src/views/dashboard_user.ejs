@@ -35,7 +35,7 @@
 
 	<script type="text/javascript" >
 			function verifyPermissionHeader(){
-				return window.localStorage.getItem("email") != ""
+				return window.localStorage.getItem("email") != "" && window.localStorage.getItem("email") != null
 			}
    </script>
 
@@ -47,7 +47,6 @@
 
 <script type="text/javascript" >
 	function logout(){
-		console.log("clicou")
 		window.localStorage.removeItem("email")
 		window.location.replace("http://localhost:3000/")
 	}
@@ -131,6 +130,8 @@
 					  <td>
 						<% if (pet.status == "True") { %>
 							<span class="badge badge-success">Aprovado</span>
+						<%} else if (pet.status == "Waiting") { %>
+							<span class="badge badge-warning">Aguardando</span>
 						<%} else { %>
 							<span class="badge badge-danger">Desaprovado</span>
 						<% } %>

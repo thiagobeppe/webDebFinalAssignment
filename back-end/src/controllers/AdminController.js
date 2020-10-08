@@ -1,6 +1,7 @@
 const Admin = require("../models/Admin");
 const { request } = require("express");
 const { create } = require("../models/Admin");
+const Pet = require("../models/Pet");
 
 
 module.exports = {
@@ -10,7 +11,9 @@ module.exports = {
         var usr = await Admin.findOne({'email': email})
         if (usr != null) {
           if (pwd == usr.password){
-            response.render('dashboard_admin', {usr:usr})
+            Pet.find({}).then(function (pet) {
+              response.render("dashboard_admin", { usr:usr, pets: pet });
+            });
           }
           else {
             response.status(500).render("signin_admin")
