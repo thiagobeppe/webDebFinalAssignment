@@ -130,6 +130,8 @@
 					  <td>
 						<% if (pet.status == "True") { %>
 							<span class="badge badge-success">Aprovado</span>
+						<%} else if (pet.status == "Waiting") { %>
+							<span class="badge badge-warning">Aguardando</span>
 						<%} else { %>
 							<span class="badge badge-danger">Desaprovado</span>
 						<% } %>
